@@ -35,3 +35,6 @@ build/
 
 ## JSON escondidos ##
 src/main/java/com/academia/banco_dados/*.json
+
+## application.properties ##
+src/main/resources/application.properties
