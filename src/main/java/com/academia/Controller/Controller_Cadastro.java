@@ -1,2 +1,4 @@
-package com.academia.Controller;public class Controller_Cadastro {
+package com.academia.Controller;
+
+public class Controller_Cadastro {
 }

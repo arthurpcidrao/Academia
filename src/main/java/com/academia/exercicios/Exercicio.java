@@ -9,7 +9,7 @@ public class Exercicio {
     private String categoria;
     private String maquina;
     private int repeticoes;
-    
+
     private MySQL_DB database = new MySQL_DB();
 
     public Exercicio(String nome, String categoria,
@@ -24,12 +24,14 @@ public class Exercicio {
 
     }
 
+    /*
     public void adicionar_exercicio(){
         String id_exercicio = "exe009";
 
         database.cadastrar_exercicio(id_exercicio,this.nome, this.categoria, this.maquina,
                 this.serie, this.repeticoes, this.tempo);
     }
+    */
 
     public void excluir_exercicio(String id){
         database.excluir_exercicio(id);

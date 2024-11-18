@@ -1,2 +1,4 @@
-package com.academia.Controller;public class Controller_Treino {
+package com.academia.Controller;
+
+public class Controller_Treino {
 }
