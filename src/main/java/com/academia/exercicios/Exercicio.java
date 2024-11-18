@@ -5,12 +5,11 @@ import java.sql.SQLException;
 
 public class Exercicio {
     private String nome;
-    //private String descricao;
+    private String descricao;
     private String categoria;
     private String maquina;
     private int repeticoes;
-    private int tempo;
-    private int serie;
+    
     private MySQL_DB database = new MySQL_DB();
 
     public Exercicio(String nome, String categoria,
@@ -21,8 +20,6 @@ public class Exercicio {
         this.categoria = categoria;
         this.maquina = maquina;
         this.repeticoes = repeticoes;
-        this.tempo = tempo;
-        this.serie = serie;
 
 
     }

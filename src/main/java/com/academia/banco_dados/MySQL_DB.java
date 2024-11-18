@@ -1,10 +1,8 @@
 package com.academia.banco_dados;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
+import com.academia.pessoas.Aluno;
 import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -57,12 +55,6 @@ public class MySQL_DB implements AdapterDB{
     */
 
     @Override
-    public int numero_funcionarios(){
-
-        return 0;
-    }
-
-    @Override
     public String get_treino() {
         return "";
     }
@@ -73,36 +65,22 @@ public class MySQL_DB implements AdapterDB{
     }
 
     @Override
-    public String get_funcionario() {
-        return "";
+    public Aluno get_aluno(String email) {
+        Aluno aluno = null;
+        return aluno;
     }
 
     @Override
-    public String get_aluno() {
-        return "";
-    }
-
-    @Override
-    public String get_cadastro() {
-        return "";
-    }
-
-    @Override
-    public void cadastrar_funcionario() {
-
-    }
-
-    @Override
-    public void cadastrar_aluno(String nome, String cpf, String email) {
+    public void cadastrar_aluno(Aluno aluno) {
         this.insertSQL = "INSERT INTO aluno (primeiro_nome_aluno, cpf_aluno, Email_aluno) VALUES (?, ?, ?)";
 
         try (Connection conn = conectar();
              PreparedStatement preparedStatement = conn.prepareStatement(insertSQL)) {
 
             // Set parameters
-            preparedStatement.setString(1, nome);
-            preparedStatement.setString(2, cpf);
-            preparedStatement.setString(3, email);
+            preparedStatement.setString(1, aluno.getNome());
+            preparedStatement.setString(2, aluno.getCpf());
+            preparedStatement.setString(3, aluno.getEmail());
 
             // Execute the insert command
             int rowsAffected = preparedStatement.executeUpdate();
@@ -115,25 +93,20 @@ public class MySQL_DB implements AdapterDB{
     }
 
 
-    public void cadastrar_exercicio(String id, String nome, String categoria, String maquina, int serie,
-                                    int repeticoes, int tempo) {
+    public void cadastrar_exercicio(String id, String nome, String categoria, String maquina, String descricao) {
 
         this.insertSQL = "INSERT INTO exercicio (\n" +
                 "    id_exercicio,\n" +
                 "    nome_exercicio,\n" +
                 "    tipo_exercicio,\n" +
                 "    maquina_exercicio,\n" +
-                "    serie_exercicio,\n" +
-                "    repeticoes_exercicio,\n" +
-                "    tempo_exercicio\n" +
+                "    descricao_exercicio\n" +
                 ") VALUES (\n" +
                 "    ?,\n" +
                 "    ?,\n" +
                 "    ?,\n" +
                 "    ?,\n" +
                 "    ?,\n" +
-                "    ?,\n" +
-                "    ? \n" +
                 ");\n";
 
         try (Connection connection = DriverManager.getConnection(url, user, password);
@@ -144,9 +117,7 @@ public class MySQL_DB implements AdapterDB{
             stmt.setString(2, nome);
             stmt.setString(3, categoria);
             stmt.setString(4, maquina);
-            stmt.setInt(5, serie);
-            stmt.setInt(6, repeticoes);
-            stmt.setInt(7, tempo);
+            stmt.setString(5, descricao);
 
             // Execute the insert command
             int rowsAffected = stmt.executeUpdate();
@@ -164,17 +135,7 @@ public class MySQL_DB implements AdapterDB{
     }
 
     @Override
-    public void editar_status_funcionario() {
-
-    }
-
-    @Override
-    public void editar_status_aluno() {
-
-    }
-
-    @Override
-    public void editar_status_atendente() {
+    public void editar_aluno() {
 
     }
 
@@ -199,12 +160,6 @@ public class MySQL_DB implements AdapterDB{
         }
     }
 
-
-
-    @Override
-    public void excluir_funcionario() {
-
-    }
 
     @Override
     public void excluir_treino() {
