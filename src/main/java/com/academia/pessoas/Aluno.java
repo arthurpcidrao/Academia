@@ -2,7 +2,9 @@ package com.academia.pessoas;
 
 import com.academia.banco_dados.MySQL_DB;
 import com.academia.exercicios.Treino;
+import com.academia.servicos.Servicos_Aluno;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -18,15 +20,16 @@ public class Aluno {
     private Date data_nascimento;
     private Date data_matricula;
     private String senha;
-    private String endereco;
     private String genero;
     private String plano;
     private List<Treino> treinos;
 
-    private MySQL_DB database;
+    private Servicos_Aluno servicos;
 
-    public Aluno(String nome, String cpf, String telefone, String email, boolean status, Date data_nascimento,
-                 Date data_matricula, String senha, String endereco, String genero, String plano){
+    public Aluno(String login, String nome, String cpf, String telefone, String email, boolean status, Date data_nascimento,
+                 Date data_matricula, String senha, String genero, String plano){
+
+        this.login = login;
         this.nome = nome;
         this.cpf = cpf;
         this.telefone = telefone;
@@ -35,18 +38,30 @@ public class Aluno {
         this.data_nascimento = data_nascimento;
         this.data_matricula = data_matricula;
         this.senha = senha;
-        this.endereco = endereco;
         this.genero = genero;
         this.plano = plano;
         treinos = new ArrayList<Treino>();
-
-        this.login = define_login();
     }
 
-    public String define_login(){
+    public Aluno(String nome, String cpf, String telefone, String email, boolean status, Date data_nascimento,
+                 Date data_matricula, String senha, String genero, String plano) throws SQLException {
 
-        int num = 1;
-        return "alu" + String.format("%07d",num);
+        this.login = criar_login();
+        this.nome = nome;
+        this.cpf = cpf;
+        this.telefone = telefone;
+        this.email = email;
+        this.status = status;
+        this.data_nascimento = data_nascimento;
+        this.data_matricula = data_matricula;
+        this.senha = senha;
+        this.genero = genero;
+        this.plano = plano;
+        treinos = new ArrayList<Treino>();
+    }
+
+    public String criar_login() throws SQLException {
+        return this.servicos.define_login();
     }
 
     public String getNome() {
@@ -89,7 +104,7 @@ public class Aluno {
         this.email = email;
     }
 
-    public boolean isStatus() {
+    public boolean getStatus() {
         return status;
     }
 
@@ -97,16 +112,16 @@ public class Aluno {
         this.status = status;
     }
 
-    public Date getData_nascimento() {
-        return data_nascimento;
+    public java.sql.Date getData_nascimento() {
+        return (java.sql.Date) data_nascimento;
     }
 
     public void setData_nascimento(Date data_nascimento) {
         this.data_nascimento = data_nascimento;
     }
 
-    public Date getData_matricula() {
-        return data_matricula;
+    public java.sql.Date getData_matricula() {
+        return (java.sql.Date) data_matricula;
     }
 
     public void setData_matricula(Date data_matricula) {
@@ -119,14 +134,6 @@ public class Aluno {
 
     public void setSenha(String senha) {
         this.senha = senha;
-    }
-
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
     }
 
     public String getGenero() {

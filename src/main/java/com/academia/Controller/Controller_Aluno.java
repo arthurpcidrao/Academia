@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/aluno")
 public class Controller_Aluno {
 
-    private Servicos_Aluno servicos_aluno = new Servicos_Aluno();
+    private final Servicos_Aluno servicos_aluno = new Servicos_Aluno();
 
     @GetMapping("/data")
     public String getData() {

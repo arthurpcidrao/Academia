@@ -1,4 +1,4 @@
 package com.academia.exercicios;
 
-public class ListaExercicios {
+public class Lista_Exercicios {
 }
