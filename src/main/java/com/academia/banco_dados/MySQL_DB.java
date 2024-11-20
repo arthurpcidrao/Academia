@@ -10,6 +10,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+
 public class MySQL_DB implements AdapterDB{
 
     private String url;

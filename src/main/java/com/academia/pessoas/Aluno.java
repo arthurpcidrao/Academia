@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+
 public class Aluno {
 
     private String nome;
@@ -25,8 +26,8 @@ public class Aluno {
 
     private Servicos_Aluno servicos;
 
-    public Aluno(String login, String nome, String cpf, String telefone, String email, boolean status, Date data_nascimento,
-                 Date data_matricula, String senha, String genero, String plano){
+    public Aluno(String login, String nome, String cpf, String telefone, String email, boolean status,
+                 Date data_nascimento, Date data_matricula, String senha, String genero, String plano){
 
         this.login = login;
         this.nome = nome;

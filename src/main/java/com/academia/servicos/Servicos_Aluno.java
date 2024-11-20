@@ -2,15 +2,35 @@ package com.academia.servicos;
 
 import com.academia.banco_dados.MySQL_DB;
 import com.academia.pessoas.Aluno;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
 
+@Service
 public class Servicos_Aluno {
 
-    private MySQL_DB database;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    private final MySQL_DB database = new MySQL_DB();
+
+    public Servicos_Aluno() throws SQLException {
+    }
 
     public void cadastrar(Aluno aluno) throws SQLException {
+        aluno.setSenha(proteger_senha(aluno.getSenha())); // criptografando a senha
         database.cadastrar_aluno(aluno);
+    }
+
+    public String proteger_senha(String senha_bruta){
+        return passwordEncoder.encode(senha_bruta);
+    }
+
+    public boolean autenticar_usuario(String login, String senha_bruta) throws SQLException {
+        Aluno aluno = procurar(login);
+        return passwordEncoder.matches(senha_bruta, aluno.getSenha());
     }
 
     public String define_login() throws SQLException {
@@ -29,12 +49,5 @@ public class Servicos_Aluno {
         return database.get_aluno(login);
     }
 
-    public boolean authenticate(String login, String senha) throws SQLException {
-        Aluno aluno = procurar(login);
-        if (aluno == null) {
-            return false;
-        }
-        return true; //new BCryptPasswordEncoder().matches(senha, aluno.getSenha());
-    }
 
 }

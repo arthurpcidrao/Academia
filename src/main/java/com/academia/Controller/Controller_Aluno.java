@@ -3,11 +3,16 @@ package com.academia.Controller;
 import com.academia.servicos.Servicos_Aluno;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.SQLException;
+
 @RestController
 @RequestMapping("/aluno")
 public class Controller_Aluno {
 
     private final Servicos_Aluno servicos_aluno = new Servicos_Aluno();
+
+    public Controller_Aluno() throws SQLException {
+    }
 
     @GetMapping("/data")
     public String getData() {
