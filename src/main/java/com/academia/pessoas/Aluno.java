@@ -1,6 +1,5 @@
 package com.academia.pessoas;
 
-import com.academia.banco_dados.MySQL_DB;
 import com.academia.exercicios.Treino;
 import com.academia.servicos.Servicos_Aluno;
 

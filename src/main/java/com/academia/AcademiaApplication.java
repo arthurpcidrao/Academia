@@ -1,7 +1,5 @@
-package com.academia.academia;
+package com.academia;
 
-import com.academia.exercicios.Exercicio;
-import com.academia.pessoas.Aluno;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

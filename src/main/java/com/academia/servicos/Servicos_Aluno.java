@@ -37,5 +37,4 @@ public class Servicos_Aluno {
         return true; //new BCryptPasswordEncoder().matches(senha, aluno.getSenha());
     }
 
-    // BCryptPasswordEncoder() -> faz parte de biblioteca spring security no java (autenticação de senha)
 }

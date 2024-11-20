@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fit Pulse - Academia</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="/trabalhoAcademia/assets/header/logo_sem_fundo.png">
+</head>
+
+<body>
+<header>
+    <nav class="nav-bar">
+        <div class="group">
+            <div class="logo">
+                <img src="/trabalhoAcademia/assets/header/logo_sem_fundo.png" id="inicio" alt="Logo academia Fit Pulse">
+            </div>
+            <div class="nav-list">
+                <ul>
+                    <li class="nav-item"><a href="#inicio" class="nav-link">HOME</a></li>
+                    <li class="nav-item"><a href="#planos" class="nav-link">PLANOS</a></li>
+                    <li class="nav-item"><a href="#conheca" class="nav-link">CONHEÇA</a></li>
+                    <li class="nav-item"><a href="#contato" class="nav-link">CONTATO</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="login-button">
+            <button><a href="Academia\src\main\frontend\loginPage\index.html">ACESSO FITPULSE</a></button>
+        </div>
+        <div class="mobile-icon">
+            <button onclick="menuShow()"><img class="icon" src="/trabalhoAcademia/assets/header/menu_white_36dp.svg" alt="Menu mobile"></button>
+        </div>
+    </nav>
+
+    <div class="mobile-menu">
+
+        <ul>
+            <li class="nav-item-mobile"><a href="#inicio" class="nav-link">Home</a></li>
+            <li class="nav-item-mobile"><a href="#planos" class="nav-link">Planos</a></li>
+            <li class="nav-item-mobile"><a href="#conheca" class="nav-link">Conheça</a></li>
+            <li class="nav-item-mobile"><a href="#contato" class="nav-link">Contato</a></li>
+        </ul>
+
+        <div class="login-button-mobile">
+            <button><a href="/trabalhoAcademia/loginPage/index.html">ACESSO FITPULSE</a></button>
+        </div>
+
+    </div>
+</header>
+
+<main>
+    <section class="slider">
+
+        <div class="slider-content">
+
+            <input type="radio" name="btn-radio" id="radio1">
+            <input type="radio" name="btn-radio" id="radio2">
+            <input type="radio" name="btn-radio" id="radio3">
+
+            <div class="slide-box primeiro">
+                <img class="img-desktop" src="/trabalhoAcademia/assets/carrossel/imagem_carrossel_web_1.png" alt="slide pc 1">
+                <img class="img-mobile" src="/trabalhoAcademia/assets/carrossel/imagem_carrossel_mob_1.png" alt="slide mobile 1">
+            </div>
+
+            <div class="slide-box">
+                <img class="img-desktop" src="/trabalhoAcademia/assets/carrossel/imagem_carrossel_web_2.png" alt="slide pc 1">
+                <img class="img-mobile" src="/trabalhoAcademia/assets/carrossel/imagem_carrossel_mob_2.png" alt="slide mobile 1">
+            </div>
+
+            <div class="slide-box">
+                <img class="img-desktop" src="/trabalhoAcademia/assets/carrossel/imagem_carrossel_web_3.png" alt="slide pc 1">
+                <img class="img-mobile" src="/trabalhoAcademia/assets/carrossel/imagem_carrossel_mob_3.png" alt="slide mobile 1">
+            </div>
+
+            <div class="nav-auto">
+                <div class="auto-btn1"></div>
+                <div class="auto-btn2"></div>
+                <div class="auto-btn3"></div>
+            </div>
+
+            <div class="nav-manual">
+                <label for="radio1" class="manual-btn"></label>
+                <label for="radio2" class="manual-btn"></label>
+                <label for="radio3" class="manual-btn"></label>
+            </div>
+        </div>
+    </section>
+
+    <section id="planos" class="planos-exp">
+
+        <div class="planos-text">
+
+            <h1>FIT PULSE</h1>
+
+            <h3>Venha conhecer nossos planos!</h3>
+
+            <p>Invista na sua saúde agora mesmo!</p>
+
+            <p>Na Fit Pulse, contamos com o pacote de serviços ideal para que você alcance suas metas de bem-estar.</p>
+
+            <p>Explore nossos planos e encontre aquele que oferece o melhor custo-benefício para você.</p>
+
+        </div>
+
+        <div class="produtos-container">
+            <div class="box-produtos">
+                <table>
+                    <tr>
+                        <td><h2>Plano Diário</h2></td>
+                    </tr>
+                    <tr>
+                        <td><p>Com valor de</p></td>
+                    </tr>
+                    <tr>
+                        <td><h3><strong>R$ </strong>29,90</h3></td>
+                    </tr>
+                    <tr>
+                        <td><p>por dia</p></td>
+                    </tr>
+                </table>
+
+                <div class="planos-button">
+                    <button><a href="/trabalhoAcademia/matricula/index.html">MATRICULE-SE!</a></button>
+                </div>
+
+                <div class="beneficios">
+                    <div class="beneficio-item">
+                        <img src="/trabalhoAcademia/assets/boxPlanos/Vector.svg" alt="">
+                        <p>Ergometria e musculação</p>
+                    </div>
+
+                    <div class="beneficio-item">
+                        <img src="/trabalhoAcademia/assets/boxPlanos/Vector.svg" alt="">
+                        <p>Horário livre</p>
+                    </div>
+
+                    <div class="beneficio-item">
+                        <img src="/trabalhoAcademia/assets/boxPlanos/Vector.svg" alt="">
+                        <p>Instrutores especializados</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="box-produtos">
+                <table>
+                    <tr>
+                        <td><h2>Plano Mensal</h2></td>
+                    </tr>
+                    <tr>
+                        <td><p>Com valor de</p></td>
+                    </tr>
+                    <tr>
+                        <td><h3><strong>R$ </strong>99,90</h3></td>
+                    </tr>
+                    <tr>
+                        <td><p>por mês</p></td>
+                    </tr>
+                </table>
+
+                <div class="planos-button">
+                    <button><a href="/trabalhoAcademia/matricula/index.html">MATRICULE-SE!</a></button>
+                </div>
+
+                <div class="beneficios">
+                    <div class="beneficio-item">
+                        <img src="/trabalhoAcademia/assets/boxPlanos/Vector.svg" alt="">
+                        <p>Sem fidelidade</p>
+                    </div>
+
+                    <div class="beneficio-item">
+                        <img src="/trabalhoAcademia/assets/boxPlanos/Vector.svg" alt="">
+                        <p>Anuidade zero</p>
+                    </div>
+
+                    <div class="beneficio-item">
+                        <img src="/trabalhoAcademia/assets/boxPlanos/Vector.svg" alt="">
+                        <p>Adesão zero</p>
+                    </div>
+
+                    <div class="beneficio-item">
+                        <img src="/trabalhoAcademia/assets/boxPlanos/Vector.svg" alt="">
+                        <p>Ergonomia e musculação</p>
+                    </div>
+
+                    <div class="beneficio-item">
+                        <img src="/trabalhoAcademia/assets/boxPlanos/Vector.svg" alt="">
+                        <p>Horário livre</p>
+                    </div>
+
+                    <div class="beneficio-item">
+                        <img src="/trabalhoAcademia/assets/boxPlanos/Vector.svg" alt="">
+                        <p>Instrutores especializados</p>
+                    </div>
+
+                    <div class="beneficio-item">
+                        <img src="/trabalhoAcademia/assets/boxPlanos/Vector.svg" alt="">
+                        <p>Acompanhante gratuito 5x ao mês</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="box-produtos">
+                <table>
+                    <tr>
+                        <td><h2>Plano Anual</h2></td>
+                    </tr>
+                    <tr>
+                        <td><p>Com valor de</p></td>
+                    </tr>
+                    <tr>
+                        <td><h3><strong>R$ </strong>959,90</h3></td>
+                    </tr>
+                    <tr>
+                        <td><p>por ano</p></td>
+                    </tr>
+                </table>
+
+                <div class="planos-button">
+                    <button><a href="/trabalhoAcademia/matricula/index.html">MATRICULE-SE!</a></button>
+                </div>
+
+                <div class="beneficios">
+                    <div class="beneficio-item">
+                        <img src="/trabalhoAcademia/assets/boxPlanos/Vector.svg" alt="">
+                        <p>Sem fidelidade</p>
+                    </div>
+
+                    <div class="beneficio-item">
+                        <img src="/trabalhoAcademia/assets/boxPlanos/Vector.svg" alt="">
+                        <p>Anuidade zero</p>
+                    </div>
+
+                    <div class="beneficio-item">
+                        <img src="/trabalhoAcademia/assets/boxPlanos/Vector.svg" alt="">
+                        <p>Adesão zero</p>
+                    </div>
+
+                    <div class="beneficio-item">
+                        <img src="/trabalhoAcademia/assets/boxPlanos/Vector.svg" alt="">
+                        <p>Ergonomia e musculação</p>
+                    </div>
+
+                    <div class="beneficio-item">
+                        <img src="/trabalhoAcademia/assets/boxPlanos/Vector.svg" alt="">
+                        <p>Horário livre</p>
+                    </div>
+
+                    <div class="beneficio-item">
+                        <img src="/trabalhoAcademia/assets/boxPlanos/Vector.svg" alt="">
+                        <p>Instrutores especializados</p>
+                    </div>
+
+                    <div class="beneficio-item">
+                        <img src="/trabalhoAcademia/assets/boxPlanos/Vector.svg" alt="">
+                        <p>Acompanhante gratuito 5x ao mês</p>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+    <section id="conheca" class="conhecer">
+
+        <div class="texto-conhecer">
+            <h2>Por que a Fit Pulse é diferente?</h2>
+            <p>Acreditamos que o exercício é para todos! Por isso, proporcionamos a melhor
+                infraestrutura, equipamentos de última geração e professores altamente
+                qualificados para que cada aluno alcance sua melhor versão.</p>
+
+            <h2>Fidelidade e Adesão ZERO</h2>
+            <p>Na Fit Pulse, você começa porque é diferente e fica porque funciona! Não
+                cobramos absolutamente nada pela adesão e você permanece com a gente
+                pelo tempo que desejar. Assim, você foca no que importa: cuidar da sua saúde.</p>
+
+            <h2>Modalidades Exclusivas</h2>
+            <p>Espaços planejados para promover uma vida mais ativa, com maior mobilidade,
+                possibilitando ao aluno se movimentar, tonificar seus músculos, perder peso e
+                ganhar massa magra.</p>
+        </div>
+
+        <div class="img-conhecer">
+            <img src="/trabalhoAcademia/assets/humans/cbum2.png" alt="Cbum sem fundo">
+        </div>
+
+    </section>
+
+    <section id="contato" class="suporte-cliente">
+
+        <div class="img-suporte">
+            <img src="/trabalhoAcademia/assets/humans/mulher_sem_fundo.png" alt="">
+        </div>
+
+        <div class="metodos-suporte">
+
+            <div class="fale-conosco">
+
+                <h3>Central de acolhimento ao cliente</h3>
+
+                <p>Ainda precisa de ajuda? Clique e fale com nosso time ;)</p>
+
+                <a href="/trabalhoAcademia/portalSAC/index.html"><button>FALE CONOSCO</button></a>
+
+            </div>
+
+            <div class="redes-sociais">
+
+                <h3>Gostou? Siga nossas redes sociais</h3>
+
+                <div class="icons">
+                    <button><img src="/trabalhoAcademia/assets/icons/youtube.png" alt="" class="youtube"></button>
+
+                    <button><img src="/trabalhoAcademia/assets/icons/facebook.png" alt=""></button>
+
+                    <button><img src="/trabalhoAcademia/assets/icons/x.png" alt=""></button>
+
+                    <button><img src="/trabalhoAcademia/assets/icons/instagram.png" alt=""></button>
+                </div>
+            </div>
+
+            <div class="duvidas">
+
+                <h3>Perguntas frequentes</h3>
+
+                <p>Caso tenha ficado alguma duvida, olhe as perguntas mais frequentes ;)</p>
+
+                <a href="/trabalhoAcademia/duvidasUser/index.html"><button>VER PERGUNTAS</button></a>
+            </div>
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+    <h3>2024 Fit Pulse © Todos os direitos reservados. Desenvolvido por Arthur | Braule | Fernando | Guilherme | Lucas</h3>
+</footer>
+
+
+<script src="script.js"></script>
+</body>
+</html>
