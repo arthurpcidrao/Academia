@@ -16,6 +16,7 @@ public interface AdapterDB {
     public String get_treino(String id);
     public String get_exercicio(String id);
     public Aluno get_aluno(String login) throws SQLException;
+    public Aluno get_aluno_cpf(String cpf) throws SQLException;
 
     public boolean teste_aluno() throws SQLException;
     public String cria_login() throws SQLException;

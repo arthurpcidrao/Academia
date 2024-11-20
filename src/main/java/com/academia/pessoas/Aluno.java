@@ -3,10 +3,12 @@ package com.academia.pessoas;
 import com.academia.exercicios.Treino;
 import com.academia.servicos.Servicos_Aluno;
 
+import java.sql.Date;
 import java.sql.SQLException;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+import java.time.LocalDate;
 
 
 public class Aluno {
@@ -17,17 +19,17 @@ public class Aluno {
     private String telefone;
     private String email;
     private boolean status;
-    private Date data_nascimento;
-    private Date data_matricula;
+    private LocalDate data_nascimento;
+    private LocalDate data_matricula;
     private String senha;
     private String genero;
     private String plano;
     private List<Treino> treinos;
 
-    private Servicos_Aluno servicos;
+    private final Servicos_Aluno servicos = new Servicos_Aluno();
 
     public Aluno(String login, String nome, String cpf, String telefone, String email, boolean status,
-                 Date data_nascimento, Date data_matricula, String senha, String genero, String plano){
+                 LocalDate data_nascimento, LocalDate data_matricula, String senha, String genero, String plano) throws SQLException {
 
         this.login = login;
         this.nome = nome;
@@ -43,17 +45,20 @@ public class Aluno {
         treinos = new ArrayList<Treino>();
     }
 
-    public Aluno(String nome, String cpf, String telefone, String email, boolean status, Date data_nascimento,
-                 Date data_matricula, String senha, String genero, String plano) throws SQLException {
+    public Aluno(String nome, String cpf, String telefone, String email, String data_nascimento,
+                 String senha, String genero, String plano) throws SQLException {
 
         this.login = criar_login();
         this.nome = nome;
         this.cpf = cpf;
         this.telefone = telefone;
         this.email = email;
-        this.status = status;
-        this.data_nascimento = data_nascimento;
-        this.data_matricula = data_matricula;
+        this.status = true;
+
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        this.data_nascimento = LocalDate.parse(data_nascimento, formato);
+
+        this.data_matricula = LocalDate.now();
         this.senha = senha;
         this.genero = genero;
         this.plano = plano;
@@ -113,18 +118,18 @@ public class Aluno {
     }
 
     public java.sql.Date getData_nascimento() {
-        return (java.sql.Date) data_nascimento;
+        return java.sql.Date.valueOf(data_nascimento);
     }
 
-    public void setData_nascimento(Date data_nascimento) {
+    public void setData_nascimento(LocalDate data_nascimento) {
         this.data_nascimento = data_nascimento;
     }
 
     public java.sql.Date getData_matricula() {
-        return (java.sql.Date) data_matricula;
+        return java.sql.Date.valueOf(data_matricula);
     }
 
-    public void setData_matricula(Date data_matricula) {
+    public void setData_matricula(LocalDate data_matricula) {
         this.data_matricula = data_matricula;
     }
 

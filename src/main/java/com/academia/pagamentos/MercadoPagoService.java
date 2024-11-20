@@ -1,4 +1,4 @@
-package com.academia.pagamentos;
+/*package com.academia.pagamentos;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -26,3 +26,6 @@ public class MercadoPagoService {
         }
     }
 }
+
+
+ */

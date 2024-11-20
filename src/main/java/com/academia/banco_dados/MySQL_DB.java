@@ -16,7 +16,7 @@ public class MySQL_DB implements AdapterDB{
     private String url;
     private String user;
     private String password;
-    private Connection connection;
+    private final Connection connection = conectar();;
     private String sqlString;
 
 
@@ -41,6 +41,7 @@ public class MySQL_DB implements AdapterDB{
 
 
     public Connection conectar() throws SQLException {
+        assert this.url != null;
         return DriverManager.getConnection(this.url, this.user, this.password);
     }
 
@@ -84,8 +85,34 @@ public class MySQL_DB implements AdapterDB{
                     resultSet.getString("telefone_aluno"),
                     resultSet.getString("Email_aluno"),
                     resultSet.getBoolean("status_aluno"),
-                    resultSet.getDate("data_nascimento_aluno"),
-                    resultSet.getDate("data_inscricao"),
+                    resultSet.getDate("data_nascimento_aluno").toLocalDate(),
+                    resultSet.getDate("data_inscricao").toLocalDate(),
+                    resultSet.getString("senha_aluno"),
+                    resultSet.getString("genero_aluno"),
+                    resultSet.getString("id_plano")
+            );
+        }
+        return null;
+    }
+
+    public Aluno get_aluno_cpf(String cpf) throws SQLException {
+
+        this.sqlString = "SELECT DISTINCT * FROM aluno WHERE cpf_aluno = ?";
+        PreparedStatement statement = connection.prepareStatement(this.sqlString);
+        statement.setString(1, cpf);
+
+        ResultSet resultSet = statement.executeQuery();
+
+        if (resultSet.next()){
+            return new Aluno(
+                    resultSet.getString("id_aluno"),
+                    resultSet.getString("nome_aluno"),
+                    resultSet.getString("cpf_aluno"),
+                    resultSet.getString("telefone_aluno"),
+                    resultSet.getString("Email_aluno"),
+                    resultSet.getBoolean("status_aluno"),
+                    resultSet.getDate("data_nascimento_aluno").toLocalDate(),
+                    resultSet.getDate("data_inscricao").toLocalDate(),
                     resultSet.getString("senha_aluno"),
                     resultSet.getString("genero_aluno"),
                     resultSet.getString("id_plano")
@@ -122,7 +149,7 @@ public class MySQL_DB implements AdapterDB{
     public void cadastrar_aluno(Aluno aluno) {
         this.sqlString = "insert into aluno(id_aluno, nome_aluno, cpf_aluno, telefone_aluno, Email_aluno, status_aluno,\n" +
                 "                  data_nascimento_aluno, data_inscricao, senha_aluno, genero_aluno, id_plano)\n" +
-                "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = conectar();
              PreparedStatement preparedStatement = conn.prepareStatement(sqlString)) {

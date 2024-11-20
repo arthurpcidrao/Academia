@@ -1,6 +1,7 @@
 package com.academia.Controller;
 
 import com.academia.servicos.Servicos_Aluno;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
@@ -11,18 +12,19 @@ public class Controller_Aluno {
 
     private final Servicos_Aluno servicos_aluno = new Servicos_Aluno();
 
-    public Controller_Aluno() throws SQLException {
-    }
-
     @GetMapping("/data")
     public String getData() {
-        // Code to return all tasks
         return "Hello from spring boot do tuca!";
     }
 
-    @PostMapping("/data")
+    @Autowired
+    public Controller_Aluno() throws SQLException {
+    }
+
+
+
+    @PostMapping("/teste")
     public String postData(@RequestBody String requestData) {
-        // Code to create a new task
         return "Received: " + requestData;
     }
 
