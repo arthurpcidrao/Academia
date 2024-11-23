@@ -1,0 +1,5 @@
+{
+  "url": "jdbc:mysql://localhost:3306/academia_bd",
+  "user": "arthurcidrao",
+  "password": "root123"
+}

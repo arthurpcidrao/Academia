@@ -1,4 +1,4 @@
-package com.academia.servicos;
+package com.academia.Service;
 
 public class Servicos_Treino {
 }

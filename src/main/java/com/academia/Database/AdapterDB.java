@@ -1,8 +1,8 @@
-package com.academia.banco_dados;
+package com.academia.Database;
 
-import com.academia.exercicios.Exercicio;
-import com.academia.exercicios.Treino;
-import com.academia.pessoas.Aluno;
+import com.academia.Model.Exercicio;
+import com.academia.Model.Treino;
+import com.academia.Model.Aluno;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -25,8 +25,7 @@ public interface AdapterDB {
     public void cadastrar_exercicio(Exercicio exercicio);
     public void cadastrar_treino(Treino treino);
 
-
-    public void editar_aluno(String login);
+    public void editar_aluno(Aluno aluno);
 
     public void excluir_aluno(String login);
     public void excluir_exercicio(String id);

@@ -1,62 +1,47 @@
 package com.academia.Controller;
 
-import com.academia.servicos.Servicos_Aluno;
+import com.academia.Model.Aluno;
+import com.academia.Service.Servicos_Aluno;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.SQLException;
+import java.util.List;
 
 @RestController
-@RequestMapping("/aluno")
+@RequestMapping("/api/alunos")
 public class Controller_Aluno {
 
-    private final Servicos_Aluno servicos_aluno = new Servicos_Aluno();
-
-    @GetMapping("/data")
-    public String getData() {
-        return "Hello from spring boot do tuca!";
-    }
-
     @Autowired
-    public Controller_Aluno() throws SQLException {
+    private Servicos_Aluno servico;
+
+    @GetMapping
+    public List<Aluno> listar() {
+        return servico.listarTodos();
     }
 
-
-
-    @PostMapping("/teste")
-    public String postData(@RequestBody String requestData) {
-        return "Received: " + requestData;
+    @PostMapping
+    public ResponseEntity<String> criar(@RequestBody Aluno aluno) {
+        servico.cadastrar(aluno);
+        return ResponseEntity.ok("Aluno cadastrado com sucesso!");
     }
 
-    /*
-    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
-        // Validar os dados da requisição
-        // ...
-
-        boolean isAuthenticated = alunoService.authenticate(loginRequest.getEmail(), loginRequest.getSenha());
-        if (isAuthenticated) {
-            // Gerar um token JWT
-            String jwt = JwtUtils.generateJwtToken(loginRequest.getEmail());
-            return ResponseEntity.ok(new JwtResponse(jwt));
-        } else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password");
-        }
+    @GetMapping("/{login}")
+    public ResponseEntity<Aluno> buscar(@PathVariable String login) {
+        Aluno aluno = servico.procurar(login);
+        return ResponseEntity.ok(aluno);
     }
-    */
 
-    /*
-    @PutMapping("/{id}")
-    public Task updateTask(@PathVariable Long id, @RequestBody Task task) {
-        // Code to update the task
-        return task;
+    @PutMapping("/{login}")
+    public ResponseEntity<Aluno> alterar(@PathVariable String login, @RequestBody Aluno alunoAtualizado) {
+        alunoAtualizado.setLogin(login);
+        servico.alterar(alunoAtualizado);
+        return ResponseEntity.ok(alunoAtualizado);
     }
-    /*
 
-    /*
-    @DeleteMapping("/{id}")
-    public void deleteTask(@PathVariable Long id) {
-        // Code to delete the task
+    @DeleteMapping("/{login}")
+    public ResponseEntity<Void> deletar(@PathVariable String login) {
+        servico.deletar(login);
+        return ResponseEntity.noContent().build();
     }
-    */
 }
-

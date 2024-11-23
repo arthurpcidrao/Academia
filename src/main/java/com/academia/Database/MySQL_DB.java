@@ -1,10 +1,10 @@
-package com.academia.banco_dados;
+package com.academia.Database;
 
 import java.sql.*;
 
-import com.academia.exercicios.Exercicio;
-import com.academia.exercicios.Treino;
-import com.academia.pessoas.Aluno;
+import com.academia.Model.Exercicio;
+import com.academia.Model.Treino;
+import com.academia.Model.Aluno;
 import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -41,22 +41,9 @@ public class MySQL_DB implements AdapterDB{
 
 
     public Connection conectar() throws SQLException {
-        assert this.url != null;
-        return DriverManager.getConnection(this.url, this.user, this.password);
+        return DriverManager.getConnection("jdbc:mysql://localhost:3306/academia_bd", "arthurcidrao", "root123");
+        //return DriverManager.getConnection(this.url, this.user, this.password);
     }
-
-    /*
-    private void desconectar() {
-        if (connection != null) {
-            try {
-                connection.close();
-                System.out.println("Disconnected from MySQL database.");
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-    */
 
     @Override
     public String get_treino(String id) {
@@ -175,7 +162,6 @@ public class MySQL_DB implements AdapterDB{
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     public void cadastrar_exercicio(Exercicio exercicio) {
@@ -222,8 +208,35 @@ public class MySQL_DB implements AdapterDB{
 
 
     @Override
-    public void editar_aluno(String login) {
+    public void editar_aluno(Aluno aluno) {
+        this.sqlString = "UPDATE aluno \n" +
+                "SET nome_aluno = ?, \n" +
+                "    telefone_aluno = ?, \n" +
+                "    Email_aluno = ?, \n" +
+                "    status_aluno = ?, \n" +
+                "    genero_aluno = ?, \n" +
+                "    id_plano = ? \n" +
+                "WHERE id_aluno = ?\n";
 
+        try (Connection conn = conectar();
+             PreparedStatement preparedStatement = conn.prepareStatement(sqlString)) {
+
+            // Set parameters
+            preparedStatement.setString(1, aluno.getNome());
+            preparedStatement.setString(2, aluno.getTelefone());
+            preparedStatement.setString(3, aluno.getEmail());
+            preparedStatement.setBoolean(4, aluno.getStatus());
+            preparedStatement.setString(5, aluno.getGenero());
+            preparedStatement.setString(6, aluno.getPlano());
+            preparedStatement.setString(7, aluno.getLogin());
+
+            // Execute the update command
+            int rowsAffected = preparedStatement.executeUpdate();
+            System.out.println("Updated " + rowsAffected + " row(s) into the database.");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

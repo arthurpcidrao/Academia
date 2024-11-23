@@ -1,13 +1,30 @@
-package com.academia.exercicios;
-import com.academia.banco_dados.MySQL_DB;
+package com.academia.Model;
+import com.academia.Database.MySQL_DB;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 import java.sql.SQLException;
 
+@Entity
+@Table(name = "exercicio")
 public class Exercicio {
+
+    @Id
+    @Column(name = "id_exercicio")
     private String id;
+
+    @Column(name = "nome_exercicio", nullable = false)
     private String nome;
+
+    @Column(name = "tipo_exercicio")
     private String categoria;
+
+    @Column(name = "maquina_exercicio")
     private String maquina;
+
+    @Column(name = "descricao_exercicio")
     private String descricao;
 
     private MySQL_DB database = new MySQL_DB();
