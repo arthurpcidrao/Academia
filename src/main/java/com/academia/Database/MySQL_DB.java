@@ -41,7 +41,7 @@ public class MySQL_DB implements AdapterDB{
 
 
     public Connection conectar() throws SQLException {
-        return DriverManager.getConnection("jdbc:mysql://localhost:3306/academia_bd", "arthurcidrao", "root123");
+        return DriverManager.getConnection(this.url, this.user, this.password);
         //return DriverManager.getConnection(this.url, this.user, this.password);
     }
 
