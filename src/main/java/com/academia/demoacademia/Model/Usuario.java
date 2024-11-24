@@ -1,9 +1,6 @@
 package com.academia.demoacademia.Model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
@@ -46,7 +43,6 @@ public class Usuario {
     private int plano;
 
 
-    // Getters e Setters
     public String getLogin() {
         return login;
     }

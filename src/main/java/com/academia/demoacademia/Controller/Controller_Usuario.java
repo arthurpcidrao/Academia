@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/usuario")
 public class Controller_Usuario {
 
@@ -50,6 +51,12 @@ public class Controller_Usuario {
 
     @PutMapping("/editar")
     public Usuario editarUsuario(@RequestBody Usuario usuario){
+        return dao.save(usuario);
+    }
+
+    @PutMapping("/desistir")
+    public Usuario atualizarUsuarioInativo(@RequestBody Usuario usuario){
+        usuario.setStatus(false);
         return dao.save(usuario);
     }
 
