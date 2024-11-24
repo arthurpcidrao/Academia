@@ -1,13 +1,15 @@
-package com.academia.Model;
+package com.academia.demoacademia.Model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "aluno")
-public class Aluno {
+public class Usuario {
 
     @Id
     @Column(name = "id_aluno", length = 10, nullable = false)
@@ -22,7 +24,7 @@ public class Aluno {
     @Column(name = "telefone_aluno", length = 20, nullable = false)
     private String telefone;
 
-    @Column(name = "email_aluno", length = 100, nullable = false, unique = true)
+    @Column(name = "Email_aluno", length = 100, nullable = false, unique = true)
     private String email;
 
     @Column(name = "status_aluno", nullable = false)
@@ -40,29 +42,9 @@ public class Aluno {
     @Column(name = "genero_aluno", length = 10, nullable = false)
     private String genero;
 
-    @Column(name = "id_plano", nullable = false)
+    @Column(name = "plano", length = 1, nullable = false)
     private int plano;
 
-    @OneToMany(mappedBy = "aluno", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Treino> treinos = new ArrayList<>();
-
-    // Construtores, getters e setters
-    public Aluno() {}
-
-    public Aluno(String login, String nome, String cpf, String telefone, String email, boolean status,
-                 LocalDate dataNascimento, LocalDate dataMatricula, String senha, String genero, int plano) {
-        this.login = login;
-        this.nome = nome;
-        this.cpf = cpf;
-        this.telefone = telefone;
-        this.email = email;
-        this.status = status;
-        this.dataNascimento = dataNascimento;
-        this.dataMatricula = dataMatricula;
-        this.senha = senha;
-        this.genero = genero;
-        this.plano = plano;
-    }
 
     // Getters e Setters
     public String getLogin() {
@@ -113,20 +95,20 @@ public class Aluno {
         this.status = status;
     }
 
-    public LocalDate getDataNascimento() {
-        return dataNascimento;
+    public java.sql.Date getDataNascimento() {
+        return java.sql.Date.valueOf(dataNascimento);
     }
 
-    public void setDataNascimento(LocalDate dataNascimento) {
-        this.dataNascimento = dataNascimento;
+    public void setDataNascimento(LocalDate data_nascimento) {
+        this.dataNascimento = data_nascimento;
     }
 
-    public LocalDate getDataMatricula() {
-        return dataMatricula;
+    public java.sql.Date getDataMatricula() {
+        return java.sql.Date.valueOf(dataMatricula);
     }
 
-    public void setDataMatricula(LocalDate dataMatricula) {
-        this.dataMatricula = dataMatricula;
+    public void setDataMatricula(LocalDate data_matricula) {
+        this.dataMatricula = data_matricula;
     }
 
     public String getSenha() {
@@ -153,11 +135,5 @@ public class Aluno {
         this.plano = plano;
     }
 
-    public List<Treino> getTreinos() {
-        return treinos;
-    }
-
-    public void setTreinos(List<Treino> treinos) {
-        this.treinos = treinos;
-    }
 }
+
