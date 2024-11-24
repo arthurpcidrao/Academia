@@ -60,5 +60,12 @@ public class Controller_Usuario {
         return dao.save(usuario);
     }
 
+    @DeleteMapping("/deletar/{login}")
+    public Optional<Usuario> deletarUsuario(@PathVariable String login){
+        Optional<Usuario> usuario = dao.findById(login);
+        dao.deleteById(login);
+        return usuario;
+    }
+
 
 }
