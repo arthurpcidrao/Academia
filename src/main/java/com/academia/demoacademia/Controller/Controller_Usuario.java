@@ -48,13 +48,6 @@ public class Controller_Usuario {
         return this.passwordEncoder.encode(senha_bruta);
     }
 
-    /*
-    public boolean autenticar_usuario(String login, String senha_bruta) {
-        Usuario usuario = procurar(login);
-        return this.passwordEncoder.matches(senha_bruta, usuario.getSenha());
-    }
-    */
-
     @PutMapping("/editar")
     public Usuario editarUsuario(@RequestBody Usuario usuario){
         return dao.save(usuario);
@@ -66,6 +59,4 @@ public class Controller_Usuario {
         dao.deleteById(login);
         return usuario;
     }
-
-
 }
