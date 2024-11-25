@@ -20,7 +20,7 @@ public class Controller_Plano {
     public List<Plano> listaPlanos(){
         return (List<Plano>) dao.findAll();
     }
-    
+
     @PostMapping("/salvar")
     public Plano salvarPlano(@RequestBody Plano plano) {
         return dao.save(plano);

@@ -8,10 +8,6 @@ import java.time.LocalDate;
 @Table(name = "aluno")
 public class Usuario {
 
-    @Id
-    @Column(name = "id_aluno", length = 10, nullable = false)
-    private String login;
-
     @Column(name = "nome_aluno", length = 100, nullable = false)
     private String nome;
 
@@ -24,14 +20,8 @@ public class Usuario {
     @Column(name = "Email_aluno", length = 100, nullable = false, unique = true)
     private String email;
 
-    @Column(name = "status_aluno", nullable = false)
-    private boolean status;
-
     @Column(name = "data_nascimento_aluno", nullable = false)
-    private LocalDate dataNascimento;
-
-    @Column(name = "data_inscricao", nullable = false)
-    private LocalDate dataMatricula;
+    private String dataNascimento;
 
     @Column(name = "senha_aluno", length = 100, nullable = false)
     private String senha;
@@ -40,7 +30,17 @@ public class Usuario {
     private String genero;
 
     @Column(name = "plano", length = 1, nullable = false)
-    private int plano;
+    private Integer plano;
+
+    @Id
+    @Column(name = "id_aluno", length = 10, nullable = false)
+    private String login;
+
+    @Column(name = "status_aluno", nullable = false)
+    private boolean status;
+
+    @Column(name = "data_inscricao", nullable = false)
+    private LocalDate dataMatricula;
 
 
     public String getLogin() {
@@ -95,7 +95,7 @@ public class Usuario {
         return java.sql.Date.valueOf(dataNascimento);
     }
 
-    public void setDataNascimento(LocalDate data_nascimento) {
+    public void setDataNascimento(String data_nascimento) {
         this.dataNascimento = data_nascimento;
     }
 

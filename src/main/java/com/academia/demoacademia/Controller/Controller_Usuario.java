@@ -15,7 +15,7 @@ import java.util.Optional;
 @CrossOrigin("*")
 @RequestMapping("/usuario")
 public class Controller_Usuario {
-
+// http://localhost:8080/usuario
     @Autowired
     private Usuario_DAO dao;
 
@@ -34,12 +34,13 @@ public class Controller_Usuario {
 
     @PostMapping("/cadastrar")
     public Usuario cadastrarUsuario(@RequestBody Usuario usuario){
+        System.out.println("JSON Recebido: " + usuario);
         int login = dao.maiorId();
         String novoLogin = String.format("aluno%05d", login + 1);
 
         usuario.setLogin(novoLogin);
         usuario.setDataMatricula(LocalDate.now());
-
+        usuario.setStatus(true);
         usuario.setSenha(proteger_senha(usuario.getSenha()));
 
         return dao.save(usuario);
