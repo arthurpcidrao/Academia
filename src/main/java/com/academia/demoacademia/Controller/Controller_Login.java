@@ -34,9 +34,9 @@ public class Controller_Login {
             case "Senha correta":
                 return ResponseEntity.ok("Login realizado com sucesso!");
             case "Senha incorreta":
-                return ResponseEntity.status(401).body("Senha incorreta");
+                return ResponseEntity.status(401).body("Usuário não encontrado ou Senha incorreta");
             default:
-                return ResponseEntity.status(404).body("Usuário não encontrado");
+                return ResponseEntity.status(404).body("Usuário não encontrado ou Senha incorreta");
         }
     }
 }
